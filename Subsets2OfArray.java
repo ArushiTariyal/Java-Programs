@@ -10,7 +10,7 @@ public class Subsets2OfArray {
         ArrayList<Integer> op2 = new ArrayList<>(op);
 
         op2.add(ip.get(i));
-        
+
         subsets(ip,op1,i+1);
         subsets(ip,op2,i+1);
     }
