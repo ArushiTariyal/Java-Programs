@@ -8,13 +8,9 @@ public class LongestSubArrayWithSumKForAllIntegersOptimal {
         int len = 0;
         for(int i = 0; i<=a.length-1; i++){
             sum += a[i];
-            if(!m.containsKey(sum)) m.put(sum,i);
             if(sum==k) len = i+1;
-            else if(sum>k){
-                if(m.containsKey(sum-k)){
-                    len = Math.max(len,i- m.get(sum-k));
-                }
-            }
+            if(m.containsKey(sum-k)) len = Math.max(len,i- m.get(sum-k));
+            if(!m.containsKey(sum)) m.put(sum,i);
         }
         System.out.println(len);;
 
