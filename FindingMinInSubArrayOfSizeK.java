@@ -1,27 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+
 
 public class FindingMinInSubArrayOfSizeK {
     public static void findMin(int[] a,int k){
         int i = 0, j = 0;
-        int min = Integer.MAX_VALUE;
-        List<Integer> ans = new ArrayList<>();
+        int[] ans = new int[a.length-k+1];
+        ArrayDeque<Integer> q = new ArrayDeque<>();
         while(j<=a.length-1){
-            if(min>a[j]) min = a[j];
-            if(j-i+1 < k) j++;
-            else if(j-i+1 ==k){
-                ans.add(min);
-                if(min==a[i]){
-                    min=a[i+1];
-                }
-                i++;
-                j++;
-
+            if(!q.isEmpty() && q.peek()==j-k) q.poll();
+           while(!q.isEmpty() && a[q.peekLast()]>a[j]){
+               q.pollLast();
             }
+           q.offer(j);
+           if(j-k+1>=0) {
+               ans[i++] = a[q.peek()];
+           }
+           j++;
         }
-        System.out.println(ans);
+        for(int e: ans) System.out.print(e+" ");
     }
     public static void main(String[] args){
-        findMin(new int[]{-3,-2,0,8,-8,-16,0},3);
+        findMin(new int[]{-3,-9,-8,0,8,-16,0},3);
     }
 }
