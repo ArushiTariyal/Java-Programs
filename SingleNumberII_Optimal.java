@@ -1,19 +1,16 @@
+import java.util.Arrays;
 public class SingleNumberII_Optimal {
     public static void main(String[] args){
-        int[] nums = {5,5,5,6,4,4,4};
-        int ans = 0;
-        for(int bits = 0; bits<=31; bits++){
-            int k = 1<<bits;
-            int count = 0;
-            for(int i = 0; i<nums.length; i++) {
-                if((nums[i] & k)!=0) {
-                    count++;
-                }
-            }
-            if(count%3==1){
-                ans = (ans | k);
+        int[] nums = {1,3,4,2,4,3,2,3,4,2};
+        Arrays.sort(nums);
+        int flag = 0;
+        for(int i= 1; i<nums.length; i = i+3){
+            if(nums[i]!= nums[i-1] || nums[i]!=nums[i+1]){
+                flag = 1;
+                System.out.println(nums[i-1]);
+                break;
             }
         }
-        System.out.println(ans);
+        if(flag==0) System.out.println(nums[nums.length-1]);
     }
 }
