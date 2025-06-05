@@ -7,7 +7,7 @@ public class PrimeFactorisation_Optimal_SmallestPrimeFactor {
             for(int i = 1; i<primes.length; i++){
                 primes[i] = i;
             }
-            for(int i = 2; i*i<primes.length; i++){
+            for(int i = 2; i*i<primes.length; i++){   //prime harmonic series O(N log (log N))
                 if(primes[i]==i){
                     for(int j = i*i; j<primes.length; j=j+i){
                         if(primes[j]==j) primes[j] = i;
