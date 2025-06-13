@@ -37,7 +37,7 @@ public class InfixToPrefix_Stack {
                 st.pop();
             }
             else{
-                while(!st.isEmpty() && (priority(ch)<priority(st.peek()))){
+                while(!st.isEmpty() && (priority(ch)<priority(st.peek()) || (priority(ch)<=priority(st.peek()) && ch=='^'))){
                     ans += st.pop();
                 }
                 st.push(ch);
