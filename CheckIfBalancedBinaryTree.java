@@ -12,7 +12,7 @@ public class CheckIfBalancedBinaryTree {
               this.right = right;
           }
       }
-    
+
     class Solution {
         public int check(TreeNode root){
             if(root==null) return 0;
