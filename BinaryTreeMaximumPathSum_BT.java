@@ -12,7 +12,7 @@ public class BinaryTreeMaximumPathSum_BT {
               this.right = right;
           }
       }
-     
+
     class Solution {
         int max[] = {Integer.MIN_VALUE};
         public int maxPathSum1(TreeNode root, int[] max){
